@@ -1,0 +1,4 @@
+changepassword
+makemessages
+makemigrations
+migrate

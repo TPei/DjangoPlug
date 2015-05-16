@@ -2,6 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
 
+   <extension point="org.eclipse.ui.views">
+        <view id="de.fhflensburg.pd.group007.views.manageview"
+             name="Manage.py"
+          class="de.fhflensburg.pd.group007.views.ManageView"
+          icon="icons\sample.gif"/>
+	</extension>
+
    <extension
          point="org.eclipse.ui.commands">
       <category
