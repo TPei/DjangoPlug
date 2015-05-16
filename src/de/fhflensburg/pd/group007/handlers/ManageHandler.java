@@ -11,7 +11,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 
-import de.fhflensburg.pd.group007.AutoCompleter;
+import de.fhflensburg.pd.group007.commands.AutoCompleter;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

@@ -1,4 +1,6 @@
-package de.fhflensburg.pd.group007;
+package de.fhflensburg.pd.group007.commands;
+
+import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
 	private final String PYTHON_ENVIRONMENT = PropertyLoader.getProperty("python_environment");

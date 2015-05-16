@@ -1,4 +1,4 @@
-package de.fhflensburg.pd.group007;
+package de.fhflensburg.pd.group007.commands;
 
 import java.io.File;
 import java.io.FileNotFoundException;

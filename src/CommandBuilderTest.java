@@ -3,13 +3,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.fhflensburg.pd.group007.AutoCompleter;
-import de.fhflensburg.pd.group007.CommandBuilder;
+import de.fhflensburg.pd.group007.commands.AutoCompleter;
+import de.fhflensburg.pd.group007.commands.CommandBuilder;
+import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 
 public class CommandBuilderTest {
 
 	CommandBuilder cb;
+	private final String PYTHON_ENVIRONMENT = PropertyLoader.getProperty("python_environment");
 	
 	@Before
     public void setUp() {
@@ -19,19 +21,19 @@ public class CommandBuilderTest {
 	@Test
 	public void testMakeManageCommand() {
 		String cmd = "makemigrations";
-		assertEquals(cb.makeManageCommand(cmd), "python3 manage.py " + cmd);
+		assertEquals(cb.makeManageCommand(cmd), PYTHON_ENVIRONMENT + " manage.py " + cmd);
 	}
 	
 	@Test
 	public void testMakeServerRunCommand() {
-		assertEquals(cb.makeServerRunCommand(), "python3 manage.py runserver");
+		assertEquals(cb.makeServerRunCommand(), PYTHON_ENVIRONMENT + " manage.py runserver");
 	}
 	
 	@Test
 	public void testRunTestsCommand() {
-		assertEquals(cb.runTestsCommand(), "python3 manage.py test");
-		assertEquals(cb.runTestsCommand(""), "python3 manage.py test ");
-		assertEquals(cb.runTestsCommand("car"), "python3 manage.py test car");
+		assertEquals(cb.runTestsCommand(), PYTHON_ENVIRONMENT + " manage.py test");
+		assertEquals(cb.runTestsCommand(""), PYTHON_ENVIRONMENT + " manage.py test ");
+		assertEquals(cb.runTestsCommand("car"), PYTHON_ENVIRONMENT + " manage.py test car");
 	}
 
 }

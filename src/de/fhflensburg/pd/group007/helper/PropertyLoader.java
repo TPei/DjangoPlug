@@ -1,4 +1,4 @@
-package de.fhflensburg.pd.group007;
+package de.fhflensburg.pd.group007.helper;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

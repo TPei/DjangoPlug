@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.fhflensburg.pd.group007.AutoCompleter;
+import de.fhflensburg.pd.group007.commands.AutoCompleter;
 
 
 public class AutoCompleterTest {
