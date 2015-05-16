@@ -28,15 +28,19 @@ public class AutoCompleter {
 	 * @param filename file to search in
 	 */
 	public AutoCompleter(String filename) {
-		Bundle bundle = Platform.getBundle("de.fhflensburg.pd.group007");
-		URL fileURL = bundle.getEntry("files/"+ filename);
-		file = null;
 		try {
+			Bundle bundle = Platform.getBundle("de.fhflensburg.pd.group007");
+			URL fileURL = bundle.getEntry("files/"+ filename);
+			file = null;
 			file = new File(FileLocator.resolve(fileURL).toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
+		} catch (NullPointerException exc) {
+			// this is necessary when using this class outside the plugin context
+			// for example when running tests
+			file = new File("files/"+ filename);
 		}
 	}
 

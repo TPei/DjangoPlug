@@ -3,8 +3,6 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,8 +19,6 @@ public class AutoCompleterTest {
 	
 	@Test
 	public void testAutoComplete() {
-		fail("Not yet implemented");
-	
 		List<String> expected = new ArrayList<String>();
 		expected.add("makemessages");
 		expected.add("makemigrations");
@@ -30,14 +26,14 @@ public class AutoCompleterTest {
 		assertEquals(ac.autoComplete("ma").size(), 2);
 		
 		List<String> expected2 = new ArrayList<String>();
-		expected.add("makemessages");
-		expected.add("makemigrations");
-		expected.add("migrate");
+		expected2.add("makemessages");
+		expected2.add("makemigrations");
+		expected2.add("migrate");
 		assertEquals(ac.autoComplete("m"), expected2);
 		assertEquals(ac.autoComplete("m").size(), 3);
 		
 		List<String> expected3 = new ArrayList<String>();
-		expected.add("changepassword");
+		expected3.add("changepassword");
 		assertEquals(ac.autoComplete("cha"), expected3);
 		assertEquals(ac.autoComplete("cha").size(), 1);
 		
