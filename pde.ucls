@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="AutoCompleterTest" project="de.fhflensburg.pd.group007" 
-    file="/de.fhflensburg.pd.group007/src/AutoCompleterTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="134" width="157" x="77" y="53"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="CommandBuilderTest" project="de.fhflensburg.pd.group007" 
-    file="/de.fhflensburg.pd.group007/src/CommandBuilderTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="188" width="225" x="304" y="45"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="de.fhflensburg.pd.group007.commands.AutoCompleter" 
+  <class id="1" language="java" name="de.fhflensburg.pd.group007.commands.AutoCompleter" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/commands/AutoCompleter.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -30,7 +12,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="de.fhflensburg.pd.group007.commands.CommandBuilder" 
+  <class id="2" language="java" name="de.fhflensburg.pd.group007.commands.CommandBuilder" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/commands/CommandBuilder.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -41,7 +23,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="de.fhflensburg.pd.group007.handlers.ManageHandler" 
+  <class id="3" language="java" name="de.fhflensburg.pd.group007.handlers.ManageHandler" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/handlers/ManageHandler.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -52,7 +34,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="de.fhflensburg.pd.group007.handlers.TestHandler" 
+  <class id="4" language="java" name="de.fhflensburg.pd.group007.handlers.TestHandler" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/handlers/TestHandler.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -63,7 +45,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="de.fhflensburg.pd.group007.handlers.ServerHandler" 
+  <class id="5" language="java" name="de.fhflensburg.pd.group007.handlers.ServerHandler" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/handlers/ServerHandler.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -74,7 +56,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="de.fhflensburg.pd.group007.views.ManageView" project="de.fhflensburg.pd.group007" 
+  <class id="6" language="java" name="de.fhflensburg.pd.group007.views.ManageView" project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/views/ManageView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="802" y="294"/>    
@@ -84,7 +66,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="de.fhflensburg.pd.group007.helper.PropertyLoader" 
+  <class id="7" language="java" name="de.fhflensburg.pd.group007.helper.PropertyLoader" 
     project="de.fhflensburg.pd.group007" 
     file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/helper/PropertyLoader.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -95,22 +77,6 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="10">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="11" name="cb"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="14" name="ac"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
