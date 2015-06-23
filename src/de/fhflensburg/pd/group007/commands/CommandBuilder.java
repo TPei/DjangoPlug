@@ -4,6 +4,7 @@ import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
 	private final String PYTHON_ENVIRONMENT = PropertyLoader.getProperty("python_environment");
+	private final String MANAGE_COMMAND = "manage.py";
 	
 	/**
 	 * creates console command for executing a manage.py command
@@ -12,7 +13,7 @@ public class CommandBuilder {
 	 * -> e.g. python3 manage.py makemigrations
 	 */
 	public String makeManageCommand(String cmd) {
-		return PYTHON_ENVIRONMENT + " manage.py " + cmd;
+		return PYTHON_ENVIRONMENT + " " + MANAGE_COMMAND + " " + cmd;
 	}
 	
 	/**

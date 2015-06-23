@@ -31,6 +31,7 @@ public class ManageHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
+			// open manage view
 			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("de.fhflensburg.pd.group007.views.manageview");
 		} catch (PartInitException e) {
 			// TODO Auto-generated catch block
