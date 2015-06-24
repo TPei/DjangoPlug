@@ -17,7 +17,7 @@ public class ManageView extends ViewPart {
 
 	public void createPartControl(Composite parent) {
 		label = new Label(parent, 0);
-		label.setText("Run manage.py command");		
+		label.setText("Run manage.py command");
 	}
 
 }

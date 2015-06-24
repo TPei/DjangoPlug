@@ -45,7 +45,7 @@ public class AutoCompleter {
 	}
 
 	/**
-	 * returns all lines from file that contain the input string
+	 * returns all lines from file that start with the input string
 	 * @param input to search for
 	 * @return List of Strings matching the input string
 	 */
@@ -60,14 +60,12 @@ public class AutoCompleter {
 				
 				String lineFromFile = scanner.nextLine();
 				
-				// if line contains input string, add line to array
-				// or contains?
+				// if line starts with input string, add line to array
 				if (lineFromFile.startsWith(input)) {
 					entries.add(lineFromFile);
 				}
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

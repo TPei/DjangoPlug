@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -22,19 +24,33 @@ public class CommandBuilderTest {
 	@Test
 	public void testMakeManageCommand() {
 		String cmd = "makemigrations";
-		assertEquals("should generate manage.py makemigrations command", cb.makeManageCommand(cmd), PYTHON_ENVIRONMENT + " manage.py " + cmd);
+		ArrayList <String> commands = new ArrayList<String>();
+		commands.add(PYTHON_ENVIRONMENT);
+		commands.add("manage.py");
+		commands.add(cmd);
+		assertEquals("should generate manage.py makemigrations command", cb.makeManageCommand(cmd), commands);
 	}
 	
 	@Test
 	public void testMakeServerRunCommand() {
-		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand(), PYTHON_ENVIRONMENT + " manage.py runserver");
+		ArrayList <String> commands = new ArrayList<String>();
+		commands.add(PYTHON_ENVIRONMENT);
+		commands.add("manage.py");
+		commands.add("runserver");
+		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand(), commands);
 	}
 	
 	@Test
 	public void testRunTestsCommand() {
-		assertEquals("should generate manage.py general test command", cb.runTestsCommand(), PYTHON_ENVIRONMENT + " manage.py test");
-		assertEquals("should generate manage.py general test command", cb.runTestsCommand(""), PYTHON_ENVIRONMENT + " manage.py test ");
-		assertEquals("should generate manage.py class test command", cb.runTestsCommand("car"), PYTHON_ENVIRONMENT + " manage.py test car");
+		ArrayList <String> commands = new ArrayList<String>();
+		commands.add(PYTHON_ENVIRONMENT);
+		commands.add("manage.py");
+		commands.add("test");
+		assertEquals("should generate manage.py general test command", cb.runTestsCommand(), commands);
+		assertEquals("should generate manage.py general test command", cb.runTestsCommand(""), commands);
+		
+		commands.add("car");
+		assertEquals("should generate manage.py class test command", cb.runTestsCommand("car"), commands);
 	}
 
 }
