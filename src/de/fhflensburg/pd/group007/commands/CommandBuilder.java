@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
-	private final String PYTHON_ENVIRONMENT = PropertyLoader.getProperty("windows_path");
+	private final String PYTHON_ENVIRONMENT = "C:\\python34\\python" //PropertyLoader.getProperty("windows_path");
 	private final String MANAGE_COMMAND = "manage.py";
 	
 	/**

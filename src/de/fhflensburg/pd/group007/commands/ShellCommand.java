@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ShellCommand {
 
-    public static void main(final String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
     	CommandBuilder cb = new CommandBuilder();
 		try {
 			ShellCommand.execute(cb.makeServerRunCommand());
