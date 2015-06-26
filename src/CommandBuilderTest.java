@@ -14,7 +14,7 @@ import de.fhflensburg.pd.group007.helper.PropertyLoader;
 public class CommandBuilderTest {
 
 	static CommandBuilder cb;
-	private final String PYTHON_ENVIRONMENT = PropertyLoader.getProperty("python_environment");
+	private final String PYTHON_ENVIRONMENT = "C:\\python34\\python"; //PropertyLoader.getProperty("python_environment");
 	
 	@BeforeClass
     public static void setUp() {
@@ -33,11 +33,17 @@ public class CommandBuilderTest {
 	
 	@Test
 	public void testMakeServerRunCommand() {
+		// without address and port
 		ArrayList <String> commands = new ArrayList<String>();
 		commands.add(PYTHON_ENVIRONMENT);
 		commands.add("manage.py");
 		commands.add("runserver");
 		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand(), commands);
+		
+		// with address and port
+		commands.add("0.0.0.0:1234");
+		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand("0.0.0.0", 1234), commands);
+		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand(1234), commands);
 	}
 	
 	@Test
@@ -47,10 +53,10 @@ public class CommandBuilderTest {
 		commands.add("manage.py");
 		commands.add("test");
 		assertEquals("should generate manage.py general test command", cb.runTestsCommand(), commands);
-		assertEquals("should generate manage.py general test command", cb.runTestsCommand(""), commands);
+		assertEquals("should generate manage.py general test command", cb.makeTestRunCommand(""), commands);
 		
 		commands.add("car");
-		assertEquals("should generate manage.py class test command", cb.runTestsCommand("car"), commands);
+		assertEquals("should generate manage.py class test command", cb.makeTestRunCommand("car"), commands);
 	}
 
 }
