@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
-	private final String PYTHON_ENVIRONMENT = "C:\\python34\\python"; //PropertyLoader.getProperty("windows_path");
-	private final String MANAGE_COMMAND = "manage.py";
+	private final static String PYTHON_ENVIRONMENT = "C:\\python34\\python"; //PropertyLoader.getProperty("windows_path");
+	private final static String MANAGE_COMMAND = "manage.py";
 	
 	/**
 	 * creates console command for executing a manage.py command
@@ -14,13 +14,17 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py makemigrations
 	 */
-	public ArrayList <String> makeManageCommand(String cmd) {
+	public static ArrayList <String> makeManageCommand(String cmd) {
 		ArrayList <String> commands = new ArrayList<String>();
 		commands.add(PYTHON_ENVIRONMENT);
 		commands.add(MANAGE_COMMAND);
 		
-		if (cmd != "")
-			commands.add(cmd);
+		if (cmd != "") {
+			String[] input = cmd.split(" ");
+			for (String in : input) {
+				commands.add(in);
+			}
+		}			
 		
 		return commands;
 	}
@@ -30,7 +34,7 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
-	public ArrayList <String> makeServerRunCommand() {
+	public static ArrayList <String> makeServerRunCommand() {
 		// TODO: get preference Data from plugin and append address:port to command
 		return makeManageCommand("runserver");
 	}
@@ -42,7 +46,7 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
-	public ArrayList<String> makeServerRunCommand(String address, int port) {
+	public static ArrayList<String> makeServerRunCommand(String address, int port) {
 		ArrayList <String> commands = makeManageCommand("runserver");
 		commands.add(address + ":" + port);
 		return commands;
@@ -54,7 +58,7 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
-	public ArrayList<String> makeServerRunCommand(int port) {
+	public static ArrayList<String> makeServerRunCommand(int port) {
 		return makeServerRunCommand("0.0.0.0", port);
 	}
 	
@@ -64,7 +68,7 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py test car.getWindows
 	 */
-	public ArrayList <String> makeTestRunCommand(String whatToTest) {
+	public static ArrayList <String> makeTestRunCommand(String whatToTest) {
 		ArrayList <String> commands = makeManageCommand("test");
 		
 		if (whatToTest != "")
@@ -78,7 +82,7 @@ public class CommandBuilder {
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py test
 	 */
-	public ArrayList <String> runTestsCommand() {
+	public static ArrayList <String> makeTestRunCommand() {
 		return makeManageCommand("test");
 	}
 }

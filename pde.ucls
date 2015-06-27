@@ -56,8 +56,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="de.fhflensburg.pd.group007.views.ManageView" project="de.fhflensburg.pd.group007" 
-    file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/views/ManageView.java" binary="false" 
+  <class id="6" language="java" name="de.fhflensburg.pd.group007.views.ConsoleView" project="de.fhflensburg.pd.group007" 
+    file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/views/ConsoleView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="802" y="294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -3,9 +3,9 @@
 <plugin>
 
    <extension point="org.eclipse.ui.views">
-        <view id="de.fhflensburg.pd.group007.views.manageview"
-             name="Manage.py"
-          class="de.fhflensburg.pd.group007.views.ManageView"
+        <view id="de.fhflensburg.pd.group007.views.consoleview"
+             name="Console"
+          class="de.fhflensburg.pd.group007.views.ConsoleView"
           icon="icons\sample.gif"/>
 	</extension>
 

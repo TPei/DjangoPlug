@@ -52,7 +52,7 @@ public class CommandBuilderTest {
 		commands.add(PYTHON_ENVIRONMENT);
 		commands.add("manage.py");
 		commands.add("test");
-		assertEquals("should generate manage.py general test command", cb.runTestsCommand(), commands);
+		assertEquals("should generate manage.py general test command", cb.makeTestRunCommand(), commands);
 		assertEquals("should generate manage.py general test command", cb.makeTestRunCommand(""), commands);
 		
 		commands.add("car");

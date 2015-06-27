@@ -3,11 +3,11 @@ package de.fhflensburg.pd.group007.views;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.part.ViewPart;
 
-public class ManageView extends ViewPart {
+public class ConsoleView extends ViewPart {
 	private Label label;
 	private Text text;
 
-	public ManageView() {
+	public ConsoleView() {
 		super();
 	}
 
@@ -17,7 +17,11 @@ public class ManageView extends ViewPart {
 
 	public void createPartControl(Composite parent) {
 		label = new Label(parent, 0);
-		label.setText("Run manage.py command");
+		label.setText("Console View");
+	}
+	
+	public void setLabel(String text) {
+		label.setText(text);
 	}
 
 }
