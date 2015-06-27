@@ -8,6 +8,12 @@
           class="de.fhflensburg.pd.group007.views.ConsoleView"
           icon="icons\sample.gif"/>
 	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="DjangoPlug Preferences"
+			class="de.fhflensburg.pd.group007.helper.PreferencePage"
+			id="de.fhflensburg.pd.group007.editorPreferences.preference.page" />
+	</extension>
 
    <extension
          point="org.eclipse.ui.commands">

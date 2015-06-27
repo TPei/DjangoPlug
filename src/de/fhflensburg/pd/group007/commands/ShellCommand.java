@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ShellCommand {
 	
 	// TODO get django path from user settings
-	private final static String DJANGO_PATH = "/Users/thomas/Code/tv_tracker";
+	private final static String DJANGO_PATH = "C:\\Users\\Thomas Peikert\\djangoproject";
 
     public static void main(String[] args) {
 		ShellCommand.execute(CommandBuilder.makeServerRunCommand());
@@ -50,10 +50,10 @@ public class ShellCommand {
 		    //System.exit(1);
     	}
     	catch (IOException exc) {
-    		out.append("IO Exception");
+    		out.append(exc.getMessage());
     	} 
     	catch (InterruptedException exc) {
-    		out.append("Interrupted Exception");
+    		out.append(exc.getMessage());
     	}
         
         return out.toString();
