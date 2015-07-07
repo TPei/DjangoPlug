@@ -31,6 +31,7 @@ public class AutoCompleter {
 		try {
 			Bundle bundle = Platform.getBundle("de.fhflensburg.pd.group007");
 			URL fileURL = bundle.getEntry("files/"+ filename);
+			//URL fileURL = new URL("platform:/plugin/de.fhflensburg.pd.group007/files/"+filename);
 			file = null;
 			file = new File(FileLocator.resolve(fileURL).toURI());
 		} catch (URISyntaxException e1) {

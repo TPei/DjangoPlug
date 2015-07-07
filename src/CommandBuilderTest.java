@@ -43,6 +43,7 @@ public class CommandBuilderTest {
 		// with address and port
 		commands.add("0.0.0.0:1234");
 		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand("0.0.0.0", 1234), commands);
+		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand("0.0.0.0:1234"), commands);
 		assertEquals("should generate manage.py runserver command", cb.makeServerRunCommand(1234), commands);
 	}
 	

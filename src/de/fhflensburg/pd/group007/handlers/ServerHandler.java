@@ -13,8 +13,8 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 
+import de.fhflensburg.pd.group007.Activator;
 import de.fhflensburg.pd.group007.commands.CommandBuilder;
-import de.fhflensburg.pd.group007.commands.ShellCommand;
 import de.fhflensburg.pd.group007.helper.InputValidator;
 
 /**
@@ -34,23 +34,13 @@ public class ServerHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// TODO: get server preferences (address, port...)
+		// get server preferences (address, port...)
+		String addressPort = Activator.getDefault().getPreferenceStore().getString("serverAddress") + ":" + Activator.getDefault().getPreferenceStore().getInt("serverPort");
 		
 		// make server run command
-		ArrayList<String> commands = CommandBuilder.makeServerRunCommand();
+		ArrayList<String> commands = CommandBuilder.makeServerRunCommand(addressPort);
 
-		// execute command in shell
-		String consoleFeedback = "";
-		consoleFeedback = ShellCommand.execute(commands);
-
-
-		// make command string for console output
-		String givenCommand = "";
-		for (String command : commands) {
-			givenCommand += command + " ";
-		}
-
-		ConsoleViewHandler.open(givenCommand, consoleFeedback);
+		ConsoleViewHandler.open(commands);
 		return null;
 	}
 }

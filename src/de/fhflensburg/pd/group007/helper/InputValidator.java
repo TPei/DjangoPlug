@@ -19,7 +19,6 @@ public class InputValidator implements IInputValidator {
 	 * @return String
 	 */
 	public String isValid(String newText) {
-		int len = newText.length();
 		
 		AutoCompleter ac = new AutoCompleter();
 		List <String> proposals = ac.autoComplete(newText);
@@ -28,9 +27,14 @@ public class InputValidator implements IInputValidator {
 			prop += proposal + "; ";
 		}
 
-		// Input must be OK
-		return null;
-		//return prop;
+		if (proposals.size() == 1 && proposals.get(0).equals(newText) || newText.equals("migrate")) {
+			// valid input
+			return null;
+		}
+		else {
+			// more than one possible command, or not command not valid
+			return prop;
+		}
 	}
 
 }

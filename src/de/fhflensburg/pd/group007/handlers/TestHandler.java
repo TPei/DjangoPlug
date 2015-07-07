@@ -11,7 +11,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 
 import de.fhflensburg.pd.group007.commands.CommandBuilder;
-import de.fhflensburg.pd.group007.commands.ShellCommand;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -35,18 +34,7 @@ public class TestHandler extends AbstractHandler {
 		// make test run command
 		ArrayList<String> commands = CommandBuilder.makeTestRunCommand();
 		
-		// execute command in shell
-		String consoleFeedback = "";
-		consoleFeedback = ShellCommand.execute(commands);
-
-
-		// make command string for console output
-		String givenCommand = "";
-		for (String command : commands) {
-			givenCommand += command + " ";
-		}
-		
-		ConsoleViewHandler.open(givenCommand, consoleFeedback);
+		ConsoleViewHandler.open(commands);
 		return null;
 	}
 }

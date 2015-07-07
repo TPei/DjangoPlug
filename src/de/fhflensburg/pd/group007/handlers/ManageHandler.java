@@ -19,7 +19,6 @@ import org.eclipse.jface.window.Window;
 
 import de.fhflensburg.pd.group007.commands.AutoCompleter;
 import de.fhflensburg.pd.group007.commands.CommandBuilder;
-import de.fhflensburg.pd.group007.commands.ShellCommand;
 import de.fhflensburg.pd.group007.helper.InputValidator;
 import de.fhflensburg.pd.group007.views.ConsoleView;
 
@@ -52,18 +51,8 @@ public class ManageHandler extends AbstractHandler {
 			// make manage command with given parameter
 			
 			ArrayList<String> commands = CommandBuilder.makeManageCommand(dlg.getValue());
-			
-			// EXECUTE!
-			String consoleFeedback = "";
-			consoleFeedback = ShellCommand.execute(commands);
 
-			// make command string for console output
-			String givenCommand = "";
-			for (String command : commands) {
-				givenCommand += command + " ";
-			}
-
-			ConsoleViewHandler.open(givenCommand, consoleFeedback);
+			ConsoleViewHandler.open(commands);
 
 		}
 

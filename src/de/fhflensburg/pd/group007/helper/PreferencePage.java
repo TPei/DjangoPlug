@@ -19,7 +19,7 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
 	private final String PYTHON_DIRECTORY = "pythonDir";
 	
 	private final String DEFAULT_TEST_ARGS = "";
-	private final String DEFAULT_SERVER_ADDRESS = "0.0.0.0";
+	private final String DEFAULT_SERVER_ADDRESS = "127.0.0.1";
 	private final int DEFAULT_SERVER_PORT = 8000;
 	private final String DEFAULT_DJANGO_DIRECTORY = "C:\\Users\\Thomas Peikert\\djangoproject";
 	private final String DEFAULT_PYTHON_DIRECTORY = "C:\\python34\\python";
@@ -49,7 +49,7 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
 	@Override
 	protected void createFieldEditors() {
 		addField(new StringFieldEditor(TEST_ARGUMENTS, "Set Test arguments (for example \"car\" to test the class car)", getFieldEditorParent()));
-		addField(new StringFieldEditor(SERVER_ADDRESS, "Set server address (default is 0.0.0.0)", getFieldEditorParent()));
+		addField(new StringFieldEditor(SERVER_ADDRESS, "Set server address (default is 127.0.0.1)", getFieldEditorParent()));
 		IntegerFieldEditor portField = new IntegerFieldEditor(SERVER_PORT, "Set server port (default is 8000)", getFieldEditorParent());
 		portField.setValidRange(1000, 9999);
 		addField(portField);

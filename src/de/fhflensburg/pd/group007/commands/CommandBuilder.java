@@ -54,6 +54,18 @@ public class CommandBuilder {
 	
 	/**
 	 * creates a runserver command
+	 * @param {String} addressPort - address:port to start server on
+	 * @return {ArrayList<String>} command for console
+	 * -> e.g. python3 manage.py runserver address:port
+	 */
+	public static ArrayList<String> makeServerRunCommand(String addressPort) {
+		ArrayList <String> commands = makeManageCommand("runserver");
+		commands.add(addressPort);
+		return commands;
+	}
+	
+	/**
+	 * creates a runserver command
 	 * @param {int} port - to start server on
 	 * @return {ArrayList<String>} command for console
 	 * -> e.g. python3 manage.py runserver address:port

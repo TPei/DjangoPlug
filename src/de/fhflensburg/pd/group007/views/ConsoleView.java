@@ -5,14 +5,13 @@ import org.eclipse.ui.part.ViewPart;
 
 public class ConsoleView extends ViewPart {
 	private Label label;
-	private Text text;
 
 	public ConsoleView() {
 		super();
 	}
 
 	public void setFocus() {
-		text.setFocus();
+		label.setFocus();
 	}
 
 	public void createPartControl(Composite parent) {
