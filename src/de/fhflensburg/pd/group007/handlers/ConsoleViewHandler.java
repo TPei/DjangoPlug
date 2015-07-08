@@ -40,6 +40,9 @@ public class ConsoleViewHandler {
 			consoleView = (ConsoleView) PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()
 					.showView("de.fhflensburg.pd.group007.views.consoleview");
+			
+			// empty console
+			consoleView.resetText();
 
 			// make a command string from command array
 			// just for prettified output
@@ -94,7 +97,7 @@ public class ConsoleViewHandler {
 					//consoleView.setLabel(givenCommand + "\n" + output);
 					consoleView.addText(output);
 
-					// shouldn't this stop the python server?
+					// shouldn't this stop the python server as well?
 					stopAllProcesses();
 				}
 			});

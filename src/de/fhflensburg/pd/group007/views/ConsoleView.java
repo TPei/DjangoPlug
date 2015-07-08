@@ -7,7 +7,6 @@ import org.eclipse.ui.part.ViewPart;
 public class ConsoleView extends ViewPart {
 	private Label label;
 	private Text text;
-	private Composite textParent;
 
 	public ConsoleView() {
 		super();
@@ -18,7 +17,6 @@ public class ConsoleView extends ViewPart {
 	}
 
 	public void createPartControl(Composite parent) {
-		this.textParent = parent;
 		text = new Text(parent, SWT.READ_ONLY | SWT.MULTI);
 	}
 	
@@ -35,7 +33,7 @@ public class ConsoleView extends ViewPart {
 	 * resets text
 	 */
 	public void resetText() {
-		text = new Text(textParent, SWT.READ_ONLY | SWT.MULTI);
+		text.setText("");
 	}
 
 }
