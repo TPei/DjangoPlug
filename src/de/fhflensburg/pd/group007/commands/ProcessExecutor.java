@@ -7,22 +7,17 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.fhflensburg.pd.group007.Activator;
+import de.fhflensburg.pd.group007.views.ConsoleView;
+
 public class ProcessExecutor extends Thread {
-	private volatile int id;
-	private String message;
 	private volatile Process process = null;
 	private ArrayList<String> commands;
-	private final static String DJANGO_PATH = "C:\\Users\\Thomas Peikert\\djangoproject";
-	String[] cmd = new String[4];
+	private final static String DJANGO_PATH = Activator.getDefault().getPreferenceStore().getString("djangoDir");
+	private String output = null;
 
-	public ProcessExecutor(int id, String message, ArrayList<String> commands) {
-		this.id = id;
-		this.message = message;
-		this.commands = commands;
-	}
-
-	public int getProcessId() {
-		return id;
+	public ProcessExecutor(ArrayList<String> commands, ConsoleView consoleView) {
+		this.commands = commands; 
 	}
 
 	public void stopTheProcess() {
@@ -32,15 +27,12 @@ public class ProcessExecutor extends Thread {
 	}
 	
 	public String getOutput() {
-		return cmd[3];
+		return this.output;
 	}
 
 	public void run() {
 		StringBuilder out = new StringBuilder();
 		try {
-			cmd[0] = "path to some app";
-			cmd[1] = id + "";
-			cmd[2] = message;
 
 			// Run macro on target
 			ProcessBuilder pb = new ProcessBuilder(commands);
@@ -59,10 +51,14 @@ public class ProcessExecutor extends Thread {
 				}
 			}
 			
-			cmd[3] = out.toString();
+			this.output = out.toString();
 
 		} catch (Exception e) {
-			cmd[3] += e.getMessage();
+			if(output == null)
+				output = e.getMessage();
+			else
+				this.output += e.getMessage();
+			
 			stopTheProcess();
 		}
 	}

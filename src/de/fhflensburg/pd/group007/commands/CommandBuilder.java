@@ -2,10 +2,11 @@ package de.fhflensburg.pd.group007.commands;
 
 import java.util.ArrayList;
 
+import de.fhflensburg.pd.group007.Activator;
 import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
-	private final static String PYTHON_ENVIRONMENT = "C:\\python34\\python"; //PropertyLoader.getProperty("windows_path");
+	private final static String PYTHON_ENVIRONMENT = Activator.getDefault().getPreferenceStore().getString("pythonDir"); //"C:\\python34\\python"; //PropertyLoader.getProperty("windows_path");
 	private final static String MANAGE_COMMAND = "manage.py";
 	
 	/**
@@ -35,8 +36,11 @@ public class CommandBuilder {
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
 	public static ArrayList <String> makeServerRunCommand() {
-		// TODO: get preference Data from plugin and append address:port to command
-		return makeManageCommand("runserver");
+		// get preference Data from plugin and append address:port to command
+		String addressPort = Activator.getDefault().getPreferenceStore().getString("serverAddress") + ":" + Activator.getDefault().getPreferenceStore().getInt("serverPort");
+		ArrayList<String> commands = makeManageCommand("runserver");
+		commands.add(addressPort);
+		return commands;
 	}
 	
 	/**
@@ -95,6 +99,9 @@ public class CommandBuilder {
 	 * -> e.g. python3 manage.py test
 	 */
 	public static ArrayList <String> makeTestRunCommand() {
-		return makeManageCommand("test");
+		ArrayList<String> commands =  makeManageCommand("test");
+		String testSubject = Activator.getDefault().getPreferenceStore().getString("testArgs");
+		commands.add(testSubject);
+		return commands;
 	}
 }

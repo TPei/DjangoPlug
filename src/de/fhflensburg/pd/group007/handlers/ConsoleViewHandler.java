@@ -3,10 +3,6 @@ package de.fhflensburg.pd.group007.handlers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -55,13 +51,14 @@ public class ConsoleViewHandler {
 			// stop all other processes before starting a new process execution
 			stopAllProcesses();
 
+			// set info label
+			consoleView.addText(givenCommand);
+			consoleView.addText("Wird ausgeführt");
+			
 			// make a process with given command and start that process
-			process = new ProcessExecutor(0, "process", commands);
+			process = new ProcessExecutor(commands, consoleView);
 			activeProccesses.add(process);
 			process.start();
-			
-			// set info label
-			consoleView.setLabel(givenCommand + "\n" + "Wird ausgeführt...");
 			
 			// async execution to be able to have a timeout
 			// because a timeout isn't allowed in the GUI thread
@@ -94,8 +91,10 @@ public class ConsoleViewHandler {
 					}
 					
 					// pipe all info (command string and output string) to console view
-					consoleView.setLabel(givenCommand + "\n" + output);
+					//consoleView.setLabel(givenCommand + "\n" + output);
+					consoleView.addText(output);
 
+					// shouldn't this stop the python server?
 					stopAllProcesses();
 				}
 			});
