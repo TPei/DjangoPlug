@@ -19,15 +19,18 @@ public class InputValidator implements IInputValidator {
 	 * @return String
 	 */
 	public String isValid(String newText) {
-		
 		AutoCompleter ac = new AutoCompleter();
 		List <String> proposals = ac.autoComplete(newText);
 		String prop = "";
 		for(String proposal : proposals) {
 			prop += proposal + "; ";
 		}
-
-		if (proposals.size() == 1 && proposals.get(0).equals(newText) || newText.equals("migrate")) {
+		
+		// special case for words with arguments
+		// should accept input if first entered word equals first command word from word with arguments
+		if (proposals.contains(newText) 
+				|| proposals.size() == 0 
+				|| (proposals.size() == 1 && proposals.get(0).split(" ").length > 1) && proposals.get(0).split(" ")[0].equals(newText.split(" ")[0])) {
 			// valid input
 			return null;
 		}

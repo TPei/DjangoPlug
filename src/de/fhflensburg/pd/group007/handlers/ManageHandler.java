@@ -44,7 +44,7 @@ public class ManageHandler extends AbstractHandler {
 		// new TextInputWindow().run();
 		InputDialog dlg = new InputDialog(
 				Display.getCurrent().getActiveShell(), "",
-				"Enter manage.py command", "command...",
+				"Enter manage.py command", "migrate",
 				new InputValidator());
 		if (dlg.open() == Window.OK) {
 			// User clicked OK; update the label with the input

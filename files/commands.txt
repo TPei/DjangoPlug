@@ -5,6 +5,7 @@ dbshell
 diffsettings
 dumpdata
 flush
+help
 inspectdb
 loaddata
 makemessages
