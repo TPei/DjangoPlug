@@ -66,13 +66,23 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="Sample Menu"
+               label="Django Plugin Menu"
                mnemonic="M"
-               id="de.fhflensburg.pd.group007.menus.sampleMenu">
+               id="de.fhflensburg.pd.group007.menus.djangoMenu">
             <command
-                  commandId="de.fhflensburg.pd.group007.commands.sampleCommand"
+                  commandId="de.fhflensburg.pd.group007.commands.startServerCommand"
                   mnemonic="S"
-                  id="de.fhflensburg.pd.group007.menus.sampleCommand">
+                  id="de.fhflensburg.pd.group007.menus.runserver">
+            </command>
+            <command
+                  commandId="de.fhflensburg.pd.group007.commands.runTestsCommand"
+                  id="de.fhflensburg.pd.group007.menus.test"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="de.fhflensburg.pd.group007.commands.manageCommand"
+                  id="de.fhflensburg.pd.group007.menus.manage"
+                  mnemonic="S">
             </command>
          </menu>
       </menuContribution>
