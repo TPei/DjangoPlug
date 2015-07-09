@@ -6,7 +6,6 @@ import de.fhflensburg.pd.group007.Activator;
 import de.fhflensburg.pd.group007.helper.PropertyLoader;
 
 public class CommandBuilder {
-	private final static String PYTHON_ENVIRONMENT = Activator.getDefault().getPreferenceStore().getString("pythonDir"); //"C:\\python34\\python"; //PropertyLoader.getProperty("windows_path");
 	private final static String MANAGE_COMMAND = "manage.py";
 	
 	/**
@@ -17,10 +16,14 @@ public class CommandBuilder {
 	 */
 	public static ArrayList <String> makeManageCommand(String cmd) {
 		ArrayList <String> commands = new ArrayList<String>();
-		commands.add(PYTHON_ENVIRONMENT);
+		try {
+			commands.add(Activator.getDefault().getPreferenceStore().getString("pythonDir"));
+		}
+		catch (NullPointerException exc) {}
+				
 		commands.add(MANAGE_COMMAND);
 		
-		if (cmd != "") {
+		if (!cmd.equals("")) {
 			String[] input = cmd.split(" ");
 			for (String in : input) {
 				commands.add(in);
@@ -36,10 +39,14 @@ public class CommandBuilder {
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
 	public static ArrayList <String> makeServerRunCommand() {
-		// get preference Data from plugin and append address:port to command
-		String addressPort = Activator.getDefault().getPreferenceStore().getString("serverAddress") + ":" + Activator.getDefault().getPreferenceStore().getInt("serverPort");
+		
 		ArrayList<String> commands = makeManageCommand("runserver");
-		commands.add(addressPort);
+		// get preference Data from plugin and append address:port to command
+		try {
+			commands.add(Activator.getDefault().getPreferenceStore().getString("serverAddress") + ":" + Activator.getDefault().getPreferenceStore().getInt("serverPort"));
+		}
+		catch (NullPointerException exc) {}
+		
 		return commands;
 	}
 	
@@ -52,7 +59,12 @@ public class CommandBuilder {
 	 */
 	public static ArrayList<String> makeServerRunCommand(String address, int port) {
 		ArrayList <String> commands = makeManageCommand("runserver");
-		commands.add(address + ":" + port);
+
+		// allowed ports for user usage are 1024 to 49151
+		if(port >= 1024 && port <= 49151)
+			commands.add(address + ":" + port);
+		else
+			commands.add(address + ":" + 8000);
 		return commands;
 	}
 	
@@ -64,7 +76,25 @@ public class CommandBuilder {
 	 */
 	public static ArrayList<String> makeServerRunCommand(String addressPort) {
 		ArrayList <String> commands = makeManageCommand("runserver");
-		commands.add(addressPort);
+		
+		if (!addressPort.equals("")) {
+			String[] addressAndPort = addressPort.split(":");
+			
+			// only add if there are at least two parts
+			if(addressAndPort.length == 2) {
+				try {
+					int port = Integer.parseInt(addressAndPort[1]);
+					// allowed ports for user usage are 1024 to 49151
+					if(port >= 1024 && port <= 49151)
+						commands.add(addressPort);
+					else // invalid port, use port 8000
+						commands.add(addressAndPort[0] + ":" + 8000);
+				}
+				catch (NumberFormatException exc) {}
+			}
+			
+		}
+			
 		return commands;
 	}
 	
@@ -87,7 +117,7 @@ public class CommandBuilder {
 	public static ArrayList <String> makeTestRunCommand(String whatToTest) {
 		ArrayList <String> commands = makeManageCommand("test");
 		
-		if (whatToTest != "")
+		if (!whatToTest.equals(""))
 			commands.add(whatToTest);
 		
 		return commands;
@@ -100,8 +130,13 @@ public class CommandBuilder {
 	 */
 	public static ArrayList <String> makeTestRunCommand() {
 		ArrayList<String> commands =  makeManageCommand("test");
-		String testSubject = Activator.getDefault().getPreferenceStore().getString("testArgs");
-		commands.add(testSubject);
+		
+		try {
+			commands.add(Activator.getDefault().getPreferenceStore().getString("testArgs"));
+		}
+		catch (NullPointerException exc) {}
+		
+		
 		return commands;
 	}
 }
