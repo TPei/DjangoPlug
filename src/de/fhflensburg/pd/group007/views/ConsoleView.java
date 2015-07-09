@@ -5,7 +5,6 @@ import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.part.ViewPart;
 
 public class ConsoleView extends ViewPart {
-	private Label label;
 	private Text text;
 
 	public ConsoleView() {
@@ -13,7 +12,7 @@ public class ConsoleView extends ViewPart {
 	}
 
 	public void setFocus() {
-		label.setFocus();
+		text.setFocus();
 	}
 
 	public void createPartControl(Composite parent) {
