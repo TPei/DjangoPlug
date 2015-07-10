@@ -19,7 +19,7 @@ public class CommandBuilderTest {
 		ArrayList <String> commands = new ArrayList<String>();
 		commands.add("manage.py");
 		commands.add(cmd);
-		assertEquals("should generate manage.py makemigrations command", CommandBuilder.makeManageCommand(cmd), commands);
+		assertEquals("should generate manage.py makemigrations command", commands, CommandBuilder.makeManageCommand(cmd));
 	}
 	
 	@Test
@@ -28,43 +28,41 @@ public class CommandBuilderTest {
 		ArrayList <String> commands = new ArrayList<String>();
 		commands.add("manage.py");
 		commands.add("runserver");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand());
 		
 		// with address and port
 		
 		// gültige Äquivalenzklassen
 		commands.add("0.0.0.0:1024");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0", 1024), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0:1024"), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(1024), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0", 1024));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:1024"));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand(1024));
 		
 		commands.remove(commands.size()-1);
 		commands.add("0.0.0.0:49151");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0", 49151), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0:49151"), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(49151), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0", 49151));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:49151"));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand(49151));
 		
 		
 		// ungültige Äqivalenzklassen
 		commands.remove(commands.size()-1);
 		commands.add("0.0.0.0:8000");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0", 1023), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0:1023"), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(1023), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0", 1023));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:1023"));
+		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(1023));
 		
 		commands.remove(commands.size()-1);
 		commands.add("0.0.0.0:8000");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0", 49152), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0:49152"), commands);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(49152), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0", 49152));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:49152"));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand(49152));
 		
 		commands.remove(commands.size()-1);
-		commands.add("0.0.0.0:8000");
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0:hallo"), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:hallo"));
 		
 		// besteht address:port nur aus einem argument, wird er verworfen
-		commands.remove(commands.size()-1);
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand("0.0.0.0"), commands);
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0"));
 	}
 	
 	@Test
@@ -72,11 +70,11 @@ public class CommandBuilderTest {
 		ArrayList <String> commands = new ArrayList<String>();
 		commands.add("manage.py");
 		commands.add("test");
-		assertEquals("should generate manage.py general test command", CommandBuilder.makeTestRunCommand(), commands);
-		assertEquals("should generate manage.py general test command", CommandBuilder.makeTestRunCommand(""), commands);
+		assertEquals("should generate manage.py general test command", commands, CommandBuilder.makeTestRunCommand());
+		assertEquals("should generate manage.py general test command", commands, CommandBuilder.makeTestRunCommand(""));
 		
 		commands.add("car");
-		assertEquals("should generate manage.py class test command", CommandBuilder.makeTestRunCommand("car"), commands);
+		assertEquals("should generate manage.py class test command", commands, CommandBuilder.makeTestRunCommand("car"));
 	}
 
 }
