@@ -58,8 +58,12 @@ public class CommandBuilder {
 	 * -> e.g. python3 manage.py runserver address:port
 	 */
 	public static ArrayList<String> makeServerRunCommand(String address, int port) {
+	
 		ArrayList <String> commands = makeManageCommand("runserver");
-
+		
+		if(address == null)
+			return commands;
+		
 		// allowed ports for user usage are 1024 to 49151
 		if(port >= 1024 && port <= 49151)
 			commands.add(address + ":" + port);
@@ -77,23 +81,26 @@ public class CommandBuilder {
 	public static ArrayList<String> makeServerRunCommand(String addressPort) {
 		ArrayList <String> commands = makeManageCommand("runserver");
 		
-		if (!addressPort.equals("")) {
-			String[] addressAndPort = addressPort.split(":");
+		try {
 			
-			// only add if there are at least two parts
-			if(addressAndPort.length == 2) {
-				try {
-					int port = Integer.parseInt(addressAndPort[1]);
-					// allowed ports for user usage are 1024 to 49151
-					if(port >= 1024 && port <= 49151)
-						commands.add(addressPort);
-					else // invalid port, use port 8000
-						commands.add(addressAndPort[0] + ":" + 8000);
+			if (!addressPort.equals("")) {
+				String[] addressAndPort = addressPort.split(":");
+				
+				// only add if there are at least two parts
+				if(addressAndPort.length == 2) {
+					try {
+						int port = Integer.parseInt(addressAndPort[1]);
+						// allowed ports for user usage are 1024 to 49151
+						if(port >= 1024 && port <= 49151)
+							commands.add(addressPort);
+						else // invalid port, use port 8000
+							commands.add(addressAndPort[0] + ":" + 8000);
+					}
+					catch (NumberFormatException exc) {}
 				}
-				catch (NumberFormatException exc) {}
+				
 			}
-			
-		}
+		}catch(NullPointerException exc) {}
 			
 		return commands;
 	}

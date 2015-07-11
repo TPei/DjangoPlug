@@ -44,6 +44,14 @@ public class AutoCompleter {
 			file = new File("files/"+ filename);
 		}
 	}
+	
+	/**
+	 * or provide file right away
+	 * @param file with lines for autocompletion
+	 */
+	public AutoCompleter(File file) {
+		this.file = file;
+	}
 
 	/**
 	 * returns all lines from file that start with the input string
@@ -67,6 +75,9 @@ public class AutoCompleter {
 				}
 			}
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (NullPointerException e){
 			e.printStackTrace();
 		}
 
