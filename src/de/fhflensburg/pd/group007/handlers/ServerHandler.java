@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+
 import de.fhflensburg.pd.group007.Activator;
 import de.fhflensburg.pd.group007.commands.CommandBuilder;
 
@@ -13,7 +14,7 @@ import de.fhflensburg.pd.group007.commands.CommandBuilder;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class ServerHandler extends AbstractHandler {
+public class ServerHandler extends AbstractHandler implements DjangoHandler {
 	/**
 	 * The constructor.
 	 */
@@ -31,7 +32,12 @@ public class ServerHandler extends AbstractHandler {
 		// make server run command
 		ArrayList<String> commands = CommandBuilder.makeServerRunCommand(addressPort);
 
-		ConsoleViewHandler.open(commands);
+		pipeToConsole(commands);
 		return null;
+	}
+
+	@Override
+	public void pipeToConsole(ArrayList<String> commands) {
+		ConsoleViewHandler.open(commands);
 	}
 }

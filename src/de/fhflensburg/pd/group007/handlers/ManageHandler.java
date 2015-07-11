@@ -8,8 +8,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
+
 import de.fhflensburg.pd.group007.commands.CommandBuilder;
-import de.fhflensburg.pd.group007.helper.InputValidator;
+import de.fhflensburg.pd.group007.helper.AutoCompleteValidator;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -17,7 +18,7 @@ import de.fhflensburg.pd.group007.helper.InputValidator;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class ManageHandler extends AbstractHandler {
+public class ManageHandler extends AbstractHandler implements DjangoHandler {
 	/**
 	 * The constructor.
 	 */
@@ -33,17 +34,22 @@ public class ManageHandler extends AbstractHandler {
 		InputDialog dlg = new InputDialog(
 				Display.getCurrent().getActiveShell(), "",
 				"Enter manage.py command", "migrate",
-				new InputValidator());
+				new AutoCompleteValidator());
 		if (dlg.open() == Window.OK) {
 			// User clicked OK; update the label with the input
 			// make manage command with given parameter
 			
 			ArrayList<String> commands = CommandBuilder.makeManageCommand(dlg.getValue());
 
-			ConsoleViewHandler.open(commands);
+			pipeToConsole(commands);
 
 		}
 
 		return null;
+	}
+
+	@Override
+	public void pipeToConsole(ArrayList<String> commands) {
+		ConsoleViewHandler.open(commands);
 	}
 }
