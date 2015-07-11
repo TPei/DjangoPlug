@@ -99,9 +99,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="de.fhflensburg.pd.group007.helper.InputValidator" 
+  <class id="10" language="java" name="de.fhflensburg.pd.group007.helper.AutoCompleteValidator" 
     project="de.fhflensburg.pd.group007" 
-    file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/helper/InputValidator.java" binary="false" 
+    file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/helper/AutoCompleteValidator.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="486" y="361"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -149,108 +149,131 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="15">    
+  <interface id="15" language="java" name="de.fhflensburg.pd.group007.handlers.DjangoHandler" 
+    project="de.fhflensburg.pd.group007" 
+    file="/de.fhflensburg.pd.group007/src/de/fhflensburg/pd/group007/handlers/DjangoHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="924" y="535"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="16">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="16" name="consoleView"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
+      <attribute id="17" name="consoleView"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="18">    
+  <association id="19">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="19" name="process"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+      <attribute id="20" name="process"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="21">    
+  <dependency id="22">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="22">    
+  <realization id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <dependency id="24">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="23">    
+  <dependency id="25">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <association id="24">    
+  <realization id="26">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="27">    
     <bendpoint x="1241" y="5"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="25" name="activeProccesses"/>      
-      <multiplicity id="26" minimum="0" maximum="2147483647"/>    
+      <attribute id="28" name="activeProccesses"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
+  <association id="30">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="28" name="plugin"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+      <attribute id="31" name="plugin"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
+  <association id="33">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="31" name="ac"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+      <attribute id="34" name="ac"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="33">    
+  <dependency id="36">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <dependency id="34">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="35">    
+  <realization id="37">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <dependency id="36">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <dependency id="37">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
+    <end type="TARGET" refId="15"/>  
+  </realization>  
   <dependency id="38">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <dependency id="39">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="43">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="40">    
+  <dependency id="44">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="41">    
+  <dependency id="45">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="42">    
+  <dependency id="46">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="43">    
+  <dependency id="47">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="44">    
+  <dependency id="48">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="45">    
+  <dependency id="49">    
     <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
