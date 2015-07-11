@@ -50,7 +50,7 @@ public class CommandBuilderTest {
 		commands.add("0.0.0.0:8000");
 		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0", 1023));
 		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0:1023"));
-		assertEquals("should generate manage.py runserver command", CommandBuilder.makeServerRunCommand(1023));
+		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand(1023));
 		
 		commands.remove(commands.size()-1);
 		commands.add("0.0.0.0:8000");
@@ -63,6 +63,10 @@ public class CommandBuilderTest {
 		
 		// besteht address:port nur aus einem argument, wird er verworfen
 		assertEquals("should generate manage.py runserver command", commands, CommandBuilder.makeServerRunCommand("0.0.0.0"));
+		
+		// null cases
+		assertEquals("", commands, CommandBuilder.makeServerRunCommand(null));
+		assertEquals("", commands, CommandBuilder.makeServerRunCommand(null, 1025));
 	}
 	
 	@Test

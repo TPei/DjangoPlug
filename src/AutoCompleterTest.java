@@ -36,7 +36,7 @@ public class AutoCompleterTest {
 		
 		// input length 1
 		assertEquals("should contain makemessages, makemigrations and migrate", expected2, ac.autoComplete("m"));
-		assertEquals("should contain three elements", expected2, ac.autoComplete("m").size());
+		assertEquals("should contain three elements", 3, ac.autoComplete("m").size());
 		
 		// return length 1
 		List<String> expected3 = new ArrayList<String>();
@@ -58,6 +58,9 @@ public class AutoCompleterTest {
 		expected5.add("migrate");
 		assertEquals("should return every command", expected5, ac.autoComplete(""));
 		assertEquals("should return every command", 4, ac.autoComplete("").size());
+		
+		// ungültige Äquivalenzklasse
+		assertEquals("should return an empty list", new ArrayList<String>(), ac.autoComplete(null));
 	}
 
 }
