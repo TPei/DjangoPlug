@@ -37,7 +37,6 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
 	@Override
 	public void init(IWorkbench arg0) {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		initializeDefaultPreferences();
 	}
 	
 	@Override

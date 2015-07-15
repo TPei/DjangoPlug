@@ -59,7 +59,7 @@ public class ConsoleViewHandler {
 			consoleView.addText("Wird ausgeführt");
 			
 			// make a process with given command and start that process
-			process = new ProcessExecutor(commands, consoleView);
+			process = new ProcessExecutor(commands);
 			activeProccesses.add(process);
 			process.start();
 			

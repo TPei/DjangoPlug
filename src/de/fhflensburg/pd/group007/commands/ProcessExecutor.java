@@ -16,7 +16,7 @@ public class ProcessExecutor extends Thread {
 	private final static String DJANGO_PATH = Activator.getDefault().getPreferenceStore().getString("djangoDir");
 	private String output = null;
 
-	public ProcessExecutor(ArrayList<String> commands, ConsoleView consoleView) {
+	public ProcessExecutor(ArrayList<String> commands) {
 		this.commands = commands; 
 	}
 
