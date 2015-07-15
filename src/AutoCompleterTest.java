@@ -62,5 +62,5 @@ public class AutoCompleterTest {
 		// ungültige Äquivalenzklasse
 		assertEquals("should return an empty list", new ArrayList<String>(), ac.autoComplete(null));
 	}
-
+	
 }

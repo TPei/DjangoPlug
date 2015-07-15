@@ -1,8 +1,11 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.fhflensburg.pd.group007.commands.ListAutoCompleter;
 import de.fhflensburg.pd.group007.helper.AutoCompleteValidator;
 
 
@@ -11,7 +14,43 @@ static AutoCompleteValidator iv;
 	
 	@BeforeClass
     public static void setUp() {
-		iv = new AutoCompleteValidator();
+		ArrayList<String> autoCompleteList = new ArrayList<String>();
+		autoCompleteList.add("check");
+		autoCompleteList.add("compilemessages");
+		autoCompleteList.add("createcachetable");
+		autoCompleteList.add("dbshell");
+		autoCompleteList.add("diffsettings");
+		autoCompleteList.add("dumpdata");
+		autoCompleteList.add("flush");
+		autoCompleteList.add("help");
+		autoCompleteList.add("inspectdb");
+		autoCompleteList.add("loaddata");
+		autoCompleteList.add("makemessages");
+		autoCompleteList.add("makemigrations [<app label>]");
+		autoCompleteList.add("migrate [<app label> [<migrationname>]]");
+		autoCompleteList.add("runfcgi");
+		autoCompleteList.add("runserver [port | address:port]");
+		autoCompleteList.add("shell");
+		autoCompleteList.add("showmigrations");
+		autoCompleteList.add("sql");
+		autoCompleteList.add("sqlall");
+		autoCompleteList.add("sqlclear");
+		autoCompleteList.add("sqlcustom");
+		autoCompleteList.add("sqldropindexes");
+		autoCompleteList.add("sqlflush");
+		autoCompleteList.add("sqlindexes");
+		autoCompleteList.add("sqlmigrate");
+		autoCompleteList.add("sqlsequencereset");
+		autoCompleteList.add("squashmigrations");
+		autoCompleteList.add("startapp");
+		autoCompleteList.add("startproject");
+		autoCompleteList.add("syncdb");
+		autoCompleteList.add("test");
+		autoCompleteList.add("testserver");
+		autoCompleteList.add("validate");
+		autoCompleteList.add("startproject");
+		autoCompleteList.add("startproject");
+		iv = new AutoCompleteValidator(new ListAutoCompleter(autoCompleteList));
     }
 	
 	@Test
